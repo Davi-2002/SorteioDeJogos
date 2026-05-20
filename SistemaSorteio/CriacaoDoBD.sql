@@ -24,6 +24,8 @@ CREATE TABLE usuario(
 	cd_senha VARCHAR(100) NOT NULL,
 	cd_telefone VARCHAR(15) NOT NULL,
 	ic_admin BIT NOT NULL DEFAULT 0,
+	cd_numero SMALLINT NOT NULL,
+	ds_complemento VARCHAR(300),
 	cd_cep VARCHAR(10) NOT NULL,
 	FOREIGN KEY (cd_cep) REFERENCES endereco(cd_cep)  
 );
