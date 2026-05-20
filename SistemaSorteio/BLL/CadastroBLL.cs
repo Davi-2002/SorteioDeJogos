@@ -105,9 +105,17 @@ namespace SistemaSorteio.BLL
                 Erro.setErro("Insira um Número válido");
                 return;
             }
-            else if(int.Parse(numero) > 32500)
+            else if(numero.Length < 10)
             {
-                Erro.setErro("O Número não pode ultrapassar 32500 digitos");
+                if (int.Parse(numero) > 32500)
+                {
+                    Erro.setErro("O Número não pode ultrapassar 32500 digitos");
+                    return;
+                }
+            }
+            else
+            {
+                Erro.setErro("O Número precisa ser menor");
                 return;
             }
 

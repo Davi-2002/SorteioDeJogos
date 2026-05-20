@@ -15,7 +15,7 @@ namespace SistemaSorteio.DAL
         
         public static void Salvar(string nome, string genero, int idUsuario, DateTime data)
         {
-            int jogoBuscado = BuscarJogo(nome);
+            int jogoBuscado = BuscarJogo(nome, genero);
             using (SqlConnection conexao = new SqlConnection(stringDeConexao))
             {
                 conexao.Open();
@@ -216,7 +216,7 @@ namespace SistemaSorteio.DAL
 
         public static void Editar(string nome, string genero, int idSorteio, DateTime data)
         {
-            int jogoBuscado = BuscarJogo(nome);
+            int jogoBuscado = BuscarJogo(nome, genero);
             using (SqlConnection conexao = new SqlConnection(stringDeConexao))
             {
                 string comandoSql = "UPDATE sorteio SET dt_dataLimite = @DataLimite, cd_jogo = @IdJogo WHERE cd_sorteio = @IdSorteio;";
@@ -244,11 +244,11 @@ namespace SistemaSorteio.DAL
             }
         }
 
-        public static int BuscarJogo(string nomeJogo)
+        public static int BuscarJogo(string nomeJogo, string genero)
         {
             using (SqlConnection conexao = new SqlConnection(stringDeConexao))
             {
-                return conexao.QueryFirstOrDefault<int>("SELECT cd_jogo FROM jogo WHERE nm_jogo = @NomeJogo", new { NomeJogo = nomeJogo });
+                return conexao.QueryFirstOrDefault<int>("SELECT cd_jogo FROM jogo WHERE nm_jogo = @NomeJogo AND nm_generoJogo = @Genero", new { NomeJogo = nomeJogo, Genero = genero });
             }
         }
 
