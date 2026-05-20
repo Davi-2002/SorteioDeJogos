@@ -54,6 +54,11 @@
             this.tb_telefone = new System.Windows.Forms.MaskedTextBox();
             this.btn_apagar = new System.Windows.Forms.Button();
             this.l_tipoConta = new System.Windows.Forms.Label();
+            this.tb_numero = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_complemento = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lb_SenhaOCultta = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -120,7 +125,7 @@
             // 
             this.l_pergunta.AutoSize = true;
             this.l_pergunta.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_pergunta.Location = new System.Drawing.Point(44, 201);
+            this.l_pergunta.Location = new System.Drawing.Point(44, 238);
             this.l_pergunta.Name = "l_pergunta";
             this.l_pergunta.Size = new System.Drawing.Size(224, 16);
             this.l_pergunta.TabIndex = 5;
@@ -154,7 +159,7 @@
             // 
             this.rb_participante.AutoSize = true;
             this.rb_participante.Checked = true;
-            this.rb_participante.Location = new System.Drawing.Point(47, 230);
+            this.rb_participante.Location = new System.Drawing.Point(47, 267);
             this.rb_participante.Name = "rb_participante";
             this.rb_participante.Size = new System.Drawing.Size(81, 17);
             this.rb_participante.TabIndex = 5;
@@ -165,7 +170,7 @@
             // rb_Sorteador
             // 
             this.rb_Sorteador.AutoSize = true;
-            this.rb_Sorteador.Location = new System.Drawing.Point(183, 230);
+            this.rb_Sorteador.Location = new System.Drawing.Point(183, 267);
             this.rb_Sorteador.Name = "rb_Sorteador";
             this.rb_Sorteador.Size = new System.Drawing.Size(71, 17);
             this.rb_Sorteador.TabIndex = 6;
@@ -246,7 +251,7 @@
             // 
             // btn_Cadastrar
             // 
-            this.btn_Cadastrar.Location = new System.Drawing.Point(358, 206);
+            this.btn_Cadastrar.Location = new System.Drawing.Point(358, 243);
             this.btn_Cadastrar.Name = "btn_Cadastrar";
             this.btn_Cadastrar.Size = new System.Drawing.Size(202, 46);
             this.btn_Cadastrar.TabIndex = 7;
@@ -257,9 +262,9 @@
             // label12
             // 
             this.label12.BackColor = System.Drawing.SystemColors.Desktop;
-            this.label12.Location = new System.Drawing.Point(326, 59);
+            this.label12.Location = new System.Drawing.Point(324, 59);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(2, 131);
+            this.label12.Size = new System.Drawing.Size(2, 155);
             this.label12.TabIndex = 22;
             // 
             // tb_cep
@@ -282,7 +287,7 @@
             // btn_apagar
             // 
             this.btn_apagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_apagar.Location = new System.Drawing.Point(137, 206);
+            this.btn_apagar.Location = new System.Drawing.Point(137, 243);
             this.btn_apagar.Name = "btn_apagar";
             this.btn_apagar.Size = new System.Drawing.Size(159, 46);
             this.btn_apagar.TabIndex = 23;
@@ -295,18 +300,70 @@
             // 
             this.l_tipoConta.AutoSize = true;
             this.l_tipoConta.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_tipoConta.Location = new System.Drawing.Point(12, 212);
+            this.l_tipoConta.Location = new System.Drawing.Point(12, 249);
             this.l_tipoConta.Name = "l_tipoConta";
             this.l_tipoConta.Size = new System.Drawing.Size(117, 16);
             this.l_tipoConta.TabIndex = 24;
             this.l_tipoConta.Text = "TIPO DE CONTA:\r\n";
             this.l_tipoConta.Visible = false;
             // 
+            // tb_numero
+            // 
+            this.tb_numero.Location = new System.Drawing.Point(412, 173);
+            this.tb_numero.Name = "tb_numero";
+            this.tb_numero.Size = new System.Drawing.Size(148, 20);
+            this.tb_numero.TabIndex = 25;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(350, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 16);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Número:";
+            // 
+            // tb_complemento
+            // 
+            this.tb_complemento.Location = new System.Drawing.Point(137, 195);
+            this.tb_complemento.Name = "tb_complemento";
+            this.tb_complemento.Size = new System.Drawing.Size(159, 20);
+            this.tb_complemento.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 16);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Complemento:";
+            // 
+            // lb_SenhaOCultta
+            // 
+            this.lb_SenhaOCultta.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lb_SenhaOCultta.AutoSize = true;
+            this.lb_SenhaOCultta.LinkColor = System.Drawing.Color.DimGray;
+            this.lb_SenhaOCultta.Location = new System.Drawing.Point(89, 120);
+            this.lb_SenhaOCultta.Name = "lb_SenhaOCultta";
+            this.lb_SenhaOCultta.Size = new System.Drawing.Size(42, 13);
+            this.lb_SenhaOCultta.TabIndex = 29;
+            this.lb_SenhaOCultta.TabStop = true;
+            this.lb_SenhaOCultta.Text = "Mostrar";
+            this.lb_SenhaOCultta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lb_SenhaOCultta_LinkClicked);
+            // 
             // TelaCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 264);
+            this.ClientSize = new System.Drawing.Size(572, 301);
+            this.Controls.Add(this.lb_SenhaOCultta);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tb_complemento);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tb_numero);
             this.Controls.Add(this.l_tipoConta);
             this.Controls.Add(this.btn_apagar);
             this.Controls.Add(this.tb_telefone);
@@ -337,6 +394,7 @@
             this.MaximizeBox = false;
             this.Name = "TelaCadastro";
             this.Text = "Cadastro";
+            this.Load += new System.EventHandler(this.TelaCadastro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +428,10 @@
         private System.Windows.Forms.MaskedTextBox tb_telefone;
         private System.Windows.Forms.Button btn_apagar;
         private System.Windows.Forms.Label l_tipoConta;
+        private System.Windows.Forms.TextBox tb_numero;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_complemento;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.LinkLabel lb_SenhaOCultta;
     }
 }

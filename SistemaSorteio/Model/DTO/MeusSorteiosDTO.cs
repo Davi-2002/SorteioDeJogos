@@ -11,5 +11,6 @@ namespace SistemaSorteio.Model.DTO
         public int IdSorteio { get; set; }
         public int IdJogo { get; set; }
         public int QtdParticipantes { get; set; }
+        public int Vencedor { get; set; }
     }
 }

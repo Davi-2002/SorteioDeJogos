@@ -99,6 +99,7 @@
             // dtp_dataLimite
             // 
             this.dtp_dataLimite.Location = new System.Drawing.Point(15, 165);
+            this.dtp_dataLimite.MinDate = new System.DateTime(2026, 5, 19, 0, 0, 0, 0);
             this.dtp_dataLimite.Name = "dtp_dataLimite";
             this.dtp_dataLimite.Size = new System.Drawing.Size(234, 20);
             this.dtp_dataLimite.TabIndex = 2;

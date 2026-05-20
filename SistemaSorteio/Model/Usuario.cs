@@ -9,8 +9,10 @@
         public string Telefone { get; set; } = string.Empty;
         public bool Admin { get; set; } = false;
         public string Cep { get; set; } = string.Empty;
+        public string Numero { get; set; } = string.Empty;
+        public string Complemento { get; set; } = string.Empty;
 
-        public Usuario(string nome, string email, string senha, string telefone, bool admin, string cep)
+        public Usuario(string nome, string email, string senha, string telefone, bool admin, string cep, string numero, string complemento)
         {
             Nome = nome;
             Email = email;
@@ -18,6 +20,8 @@
             Telefone = telefone;
             Admin = admin;
             Cep = cep;
+            Numero = numero;
+            Complemento = complemento;
         }
 
         public Usuario() { }

@@ -21,7 +21,7 @@ namespace SistemaSorteio.BLL
 
         public static bool EditarUsuario(Usuario usuario, Endereco endereco)
         {
-            CadastroBLL.ValidaCadastro(usuario.IdUsuario, usuario.Nome, usuario.Senha, usuario.Email, usuario.Telefone, usuario.Cep, endereco.Cidade);
+            CadastroBLL.ValidaCadastro(usuario.IdUsuario, usuario.Nome, usuario.Senha, usuario.Email, usuario.Telefone, usuario.Cep, endereco.Cidade, usuario.Numero, usuario.Complemento);
 
             if (Erro.getErro())
             {

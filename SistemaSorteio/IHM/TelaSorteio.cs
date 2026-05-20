@@ -1,6 +1,7 @@
 ﻿using SistemaSorteio.BLL;
 using SistemaSorteio.Model;
 using SistemaSorteio.Model.DTO;
+using System;
 using System.Windows.Forms;
 
 namespace SistemaSorteio.IHM
@@ -14,6 +15,7 @@ namespace SistemaSorteio.IHM
             Conta = conta;
             InitializeComponent();
             l_tituloTela.Text = "Criar Sorteio";
+            dtp_dataLimite.MinDate = DateTime.Today;
         }
 
         public TelaSorteio(Usuario conta, MeusSorteiosDTO sorteioParaEditar)
@@ -22,9 +24,11 @@ namespace SistemaSorteio.IHM
             SorteioParaEditar = sorteioParaEditar;            
             InitializeComponent();
             l_tituloTela.Text = "Editar Sorteio";
-            tb_nomeJogo.Text = sorteioParaEditar.NomeJogo;
+            tb_nomeJogo.Text = sorteioParaEditar.NomeJogo;            
             cb_Genero.Text = sorteioParaEditar.Genero;
-            dtp_dataLimite.Value = sorteioParaEditar.DataLimite;
+            if (dtp_dataLimite.Value < DateTime.Today)              
+                dtp_dataLimite.Value = sorteioParaEditar.DataLimite;
+            dtp_dataLimite.MinDate = DateTime.Today;
         }
 
         private void btn_salvarSorteio_Click(object sender, System.EventArgs e)

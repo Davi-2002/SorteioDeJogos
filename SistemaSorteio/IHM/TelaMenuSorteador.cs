@@ -35,7 +35,7 @@ namespace SistemaSorteio.IHM
         {            
             dgv_ListaSorteios.Columns["IdSorteio"].Visible = false;
             dgv_ListaSorteios.Columns["IdJogo"].Visible = false;
-            //dgv_ListaSorteios.Columns["Vencedor"].Visible = false;
+            dgv_ListaSorteios.Columns["Vencedor"].Visible = false;
 
             if (!dgv_ListaSorteios.Columns.Contains("Editar"))
             {
@@ -128,6 +128,7 @@ namespace SistemaSorteio.IHM
         private void SortearUsuario(int idSorteio, DataGridViewCellEventArgs e)
         {
             int participantes = Convert.ToInt32(dgv_ListaSorteios.Rows[e.RowIndex].Cells["QtdParticipantes"].Value);
+            int vencedorBool = Convert.ToInt32(dgv_ListaSorteios.Rows[e.RowIndex].Cells["Vencedor"].Value);
             string statusSorteio = dgv_ListaSorteios.Rows[e.RowIndex].Cells["StatusSorteio"].Value.ToString();
             if (statusSorteio != "Fechado")
             {
@@ -154,13 +155,20 @@ namespace SistemaSorteio.IHM
             }
             else
             {
-                Usuario vencedor = SorteioBLL.BuscarVencedorSorteio(idSorteio);
-                MessageBox.Show($"VENCEDOR: \"{vencedor.Nome}\"\n" +
-                                $"<------------------------------->\n" +
-                                $"Dados deste usuário:\n\n" +
-                                $"Email: {vencedor.Email}\n\n" +
-                                $"Telefone: {vencedor.Telefone}\n\n" +
-                                $"CEP: {vencedor.Cep}");
+                if (participantes != 0 && vencedorBool == 1)
+                {
+                    Usuario vencedor = SorteioBLL.BuscarVencedorSorteio(idSorteio);
+                    MessageBox.Show($"VENCEDOR: \"{vencedor.Nome}\"\n" +
+                                    $"<------------------------------->\n" +
+                                    $"Dados deste usuário:\n\n" +
+                                    $"Email: {vencedor.Email}\n\n" +
+                                    $"Telefone: {vencedor.Telefone}\n\n" +
+                                    $"CEP: {vencedor.Cep}");
+                }
+                else
+                {
+                    MessageBox.Show("O usuário vencendor provavelmente apagou a conta.\r\nNão é mais possível ver seus dados.");
+                }
             }
         }
 

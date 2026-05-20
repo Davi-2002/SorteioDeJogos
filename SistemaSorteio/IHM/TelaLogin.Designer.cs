@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Login = new System.Windows.Forms.Button();
+            this.lb_SenhaOCulta = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // tb_usuario
@@ -92,11 +93,25 @@
             this.btn_Login.UseVisualStyleBackColor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
+            // lb_SenhaOCulta
+            // 
+            this.lb_SenhaOCulta.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lb_SenhaOCulta.AutoSize = true;
+            this.lb_SenhaOCulta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lb_SenhaOCulta.Location = new System.Drawing.Point(19, 161);
+            this.lb_SenhaOCulta.Name = "lb_SenhaOCulta";
+            this.lb_SenhaOCulta.Size = new System.Drawing.Size(42, 13);
+            this.lb_SenhaOCulta.TabIndex = 30;
+            this.lb_SenhaOCulta.TabStop = true;
+            this.lb_SenhaOCulta.Text = "Mostrar";
+            this.lb_SenhaOCulta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lb_SenhaOCulta_LinkClicked);
+            // 
             // TelaLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(201, 261);
+            this.Controls.Add(this.lb_SenhaOCulta);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_senha);
@@ -107,6 +122,7 @@
             this.MaximizeBox = false;
             this.Name = "TelaLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.TelaLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +136,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.LinkLabel lb_SenhaOCulta;
     }
 }

@@ -8,7 +8,7 @@ namespace SistemaSorteio.BLL
 {
     public class CadastroBLL
     {
-        public static void ValidaCadastro(int idUsuarioAtual, string nomeUsuario, string senhaUsuario, string email, string telefone, string cep, string cidade)
+        public static void ValidaCadastro(int idUsuarioAtual, string nomeUsuario, string senhaUsuario, string email, string telefone, string cep, string cidade, string numero, string complemento)
         {
             //NOME
             Erro.setErro(false);
@@ -39,7 +39,7 @@ namespace SistemaSorteio.BLL
                 Erro.setErro("O email é de preenchimento obrigatório");
                 return;
             }
-            else if (!Regex.IsMatch(email, "^.+@.+\\.com$"))
+            else if (!Regex.IsMatch(email, "^.+@.+\\.(com|com\\.br|br|edu|org|net)$"))
             {
                 Erro.setErro("O email precisa ser válido");
                 return;
@@ -61,6 +61,11 @@ namespace SistemaSorteio.BLL
                 if (string.IsNullOrWhiteSpace(senhaUsuario))
                 {
                     Erro.setErro("A senha é de preenchimento obrigatório");
+                    return;
+                }
+                else if(senhaUsuario.Length < 4)
+                {
+                    Erro.setErro("A senha precisa ter no mínimo 4 digitos");
                     return;
                 }
             }
@@ -86,6 +91,30 @@ namespace SistemaSorteio.BLL
             else if(!Regex.IsMatch(cep, "^[0-9]{5}-[0-9]{3}$"))
             {
                 Erro.setErro("O formato do CEP está incorreto");
+                return;
+            }
+
+            //NUMERO
+            if (string.IsNullOrWhiteSpace(numero))
+            {
+                Erro.setErro("O Número é de preenchimento obrigatório");
+                return;
+            }
+            else if (!Regex.IsMatch(numero, "^[0-9]+$"))
+            {
+                Erro.setErro("Insira um Número válido");
+                return;
+            }
+            else if(int.Parse(numero) > 32500)
+            {
+                Erro.setErro("O Número não pode ultrapassar 32500 digitos");
+                return;
+            }
+
+            //COMPLEMENTO
+            if (complemento.Length >= 300)
+            {
+                Erro.setErro("O Complemento não pode ultrapassar 300 caracteres");
                 return;
             }
         }
@@ -123,7 +152,7 @@ namespace SistemaSorteio.BLL
 
         public static bool CadastrarUsuario(Usuario usuario, Endereco endereco)
         {
-            ValidaCadastro(usuario.IdUsuario, usuario.Nome, usuario.Senha, usuario.Email, usuario.Telefone, usuario.Cep, endereco.Cidade);
+            ValidaCadastro(usuario.IdUsuario, usuario.Nome, usuario.Senha, usuario.Email, usuario.Telefone, usuario.Cep, endereco.Cidade, usuario.Numero, usuario.Complemento);
 
             if (Erro.getErro())
             {

@@ -50,5 +50,19 @@ namespace SistemaSorteio.IHM
                 MessageBox.Show("O nome de usuário ou a senha está incorreta");
             }
         }
+
+        private void lb_SenhaOCulta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tb_senha.UseSystemPasswordChar = !tb_senha.UseSystemPasswordChar;
+            if (tb_senha.UseSystemPasswordChar)
+                lb_SenhaOCulta.Text = "Ocultar";
+            else
+                lb_SenhaOCulta.Text = "Mostrar";
+        }
+
+        private void TelaLogin_Load(object sender, EventArgs e)
+        {
+            tb_senha.UseSystemPasswordChar = true;
+        }
     }
 }

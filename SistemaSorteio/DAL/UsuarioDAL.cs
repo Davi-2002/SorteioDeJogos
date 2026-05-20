@@ -17,7 +17,7 @@ namespace SistemaSorteio.DAL
                 if(cepBuscado == null)
                     conexao.Execute("INSERT INTO endereco(cd_cep, nm_cidade, nm_estado, nm_rua, nm_bairro)\r\nVALUES(@Cep, @Cidade, @Estado, @Rua, @Bairro)", endereco);
                 
-                return conexao.QuerySingle<int>("INSERT INTO usuario(nm_usuario, nm_email, cd_senha, cd_telefone, ic_admin, cd_cep)\r\nVALUES(@Nome, @Email, @Senha, @Telefone, @Admin, @Cep); SELECT SCOPE_IDENTITY();", usuario);
+                return conexao.QuerySingle<int>("INSERT INTO usuario(nm_usuario, nm_email, cd_senha, cd_telefone, ic_admin, cd_cep, cd_numero, ds_complemento)\r\nVALUES(@Nome, @Email, @Senha, @Telefone, @Admin, @Cep, @Numero, @Complemento); SELECT SCOPE_IDENTITY();", usuario);
             }
         }
 
@@ -36,7 +36,9 @@ namespace SistemaSorteio.DAL
                         cd_senha AS Senha, 
                         cd_telefone AS Telefone, 
                         ic_admin AS Admin, 
-                        cd_cep AS Cep 
+                        cd_cep AS Cep,
+                        cd_numero AS Numero,
+                        ds_complemento AS Complemento
                     FROM usuario 
                     WHERE nm_usuario = @Nome AND cd_senha = @Senha";
 
@@ -51,7 +53,7 @@ namespace SistemaSorteio.DAL
             string cepBuscado = BuscarCep(usuario.Cep);
             using (SqlConnection conexao = new SqlConnection(stringDeConexao))
             {
-                string comandoSql = "UPDATE usuario SET nm_usuario = @Nome, nm_email = @Email, cd_telefone = @Telefone, cd_cep = @Cep";
+                string comandoSql = "UPDATE usuario SET nm_usuario = @Nome, nm_email = @Email, cd_telefone = @Telefone, cd_cep = @Cep, cd_numero = @Numero, ds_complemento = @Complemento";
 
                 if(!string.IsNullOrWhiteSpace(usuario.Senha))
                 {
@@ -72,7 +74,13 @@ namespace SistemaSorteio.DAL
         {
             using (SqlConnection conexao = new SqlConnection(stringDeConexao))
             {
-                conexao.Execute("DELETE FROM usuario_sorteio WHERE cd_usuario = @IdUsuario; DELETE FROM sorteio WHERE cd_usuario = @IdUsuario; DELETE FROM usuario WHERE cd_usuario = @IdUsuario;", new { IdUsuario = idUsuario });
+                string comandoSql = @"
+                                    DELETE FROM usuario_sorteio WHERE cd_sorteio IN (SELECT cd_sorteio FROM sorteio WHERE cd_usuario = @IdUsuario);
+                                    DELETE FROM usuario_sorteio WHERE cd_usuario = @IdUsuario;
+                                    DELETE FROM sorteio WHERE cd_usuario = @IdUsuario;
+                                    DELETE FROM usuario WHERE cd_usuario = @IdUsuario;";
+
+                conexao.Execute(comandoSql, new { IdUsuario = idUsuario });
             }
         }
 

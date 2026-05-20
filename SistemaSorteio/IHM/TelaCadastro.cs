@@ -39,6 +39,8 @@ namespace SistemaSorteio.IHM
             tb_email.Text = Conta.Email;
             tb_telefone.Text = Conta.Telefone;
             tb_cep.Text = Conta.Cep;
+            tb_numero.Text = Conta.Numero;
+            tb_complemento.Text = Conta.Complemento;
         }
 
 
@@ -72,7 +74,7 @@ namespace SistemaSorteio.IHM
             {
                 string texto = "Usuário cadastrado com sucesso!";
                 bool admin = rb_Sorteador.Checked;
-                Usuario novoUsuario = new Usuario(tb_usuario.Text, tb_email.Text, tb_senha.Text, tb_telefone.Text, admin, tb_cep.Text);
+                Usuario novoUsuario = new Usuario(tb_usuario.Text, tb_email.Text, tb_senha.Text, tb_telefone.Text, admin, tb_cep.Text, tb_numero.Text, tb_complemento.Text);
 
                 bool sucesso = CadastroBLL.CadastrarUsuario(novoUsuario, cadastroEndereco);
 
@@ -110,9 +112,8 @@ namespace SistemaSorteio.IHM
             }
             else
             {
-                Usuario editarUsuario = new Usuario(tb_usuario.Text, tb_email.Text, tb_senha.Text, tb_telefone.Text, Conta.Admin, tb_cep.Text);
+                Usuario editarUsuario = new Usuario(tb_usuario.Text, tb_email.Text, tb_senha.Text, tb_telefone.Text, Conta.Admin, tb_cep.Text, tb_numero.Text, tb_complemento.Text);
                 editarUsuario.IdUsuario = Conta.IdUsuario;
-
 
                 bool sucesso = UsuarioBLL.EditarUsuario(editarUsuario, cadastroEndereco);
 
@@ -123,8 +124,10 @@ namespace SistemaSorteio.IHM
                     Conta.Email = tb_email.Text;           
                     Conta.Telefone = tb_telefone.Text;
                     Conta.Cep = tb_cep.Text;
+                    Conta.Numero = tb_numero.Text;
+                    Conta.Complemento = tb_complemento.Text;
 
-                    if(!string.IsNullOrWhiteSpace(editarUsuario.Senha))
+                    if (!string.IsNullOrWhiteSpace(editarUsuario.Senha))
                     {
                         Conta.Senha = editarUsuario.Senha;
                     }
@@ -145,6 +148,20 @@ namespace SistemaSorteio.IHM
                 UsuarioBLL.ApagarUsuario(Conta.IdUsuario);
                 Application.Restart();
             }
+        }
+
+        private void TelaCadastro_Load(object sender, EventArgs e)
+        {
+            tb_senha.UseSystemPasswordChar = true;
+        }
+
+        private void lb_SenhaOCultta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tb_senha.UseSystemPasswordChar = !tb_senha.UseSystemPasswordChar;
+            if(tb_senha.UseSystemPasswordChar)
+                lb_SenhaOCultta.Text = "Ocultar";
+            else
+                lb_SenhaOCultta.Text = "Mostrar";
         }
     }
 }

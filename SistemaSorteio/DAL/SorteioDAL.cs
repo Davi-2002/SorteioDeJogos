@@ -39,7 +39,8 @@ namespace SistemaSorteio.DAL
                         jogo.nm_generoJogo AS Genero, 
                         sorteio.cd_sorteio AS IdSorteio, 
                         sorteio.dt_dataLimite AS DataLimite, 
-                        sorteio.ds_status AS StatusSorteio, 
+                        sorteio.ds_status AS StatusSorteio,
+                        MAX(CAST(usuario_sorteio.ic_vencedor AS INT)) AS Vencedor,
                         COUNT(usuario_sorteio.cd_usuario) AS QtdParticipantes 
                     FROM jogo 
                     INNER JOIN sorteio ON jogo.cd_jogo = sorteio.cd_jogo 
@@ -73,7 +74,8 @@ namespace SistemaSorteio.DAL
                         jogo.nm_generoJogo AS Genero, 
                         sorteio.cd_sorteio AS IdSorteio, 
                         sorteio.dt_dataLimite AS DataLimite, 
-                        sorteio.ds_status AS StatusSorteio, 
+                        sorteio.ds_status AS StatusSorteio,
+                        MAX(CAST(usuario_sorteio.ic_vencedor AS INT)) AS Vencedor,
                         COUNT(usuario_sorteio.cd_usuario) AS QtdParticipantes 
                     FROM jogo 
                     INNER JOIN sorteio ON jogo.cd_jogo = sorteio.cd_jogo 
